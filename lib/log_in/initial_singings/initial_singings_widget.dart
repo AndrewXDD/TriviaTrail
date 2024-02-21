@@ -110,9 +110,7 @@ class _InitialSingingsWidgetState extends State<InitialSingingsWidget> {
                                     fontSize: 35.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                        .containsKey('Inter'),
                                   ),
                             ),
                           ),
@@ -138,8 +136,8 @@ class _InitialSingingsWidgetState extends State<InitialSingingsWidget> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                context.pushNamed('initial_signin');
                               },
                               text: 'Sign In',
                               options: FFButtonOptions(
@@ -170,8 +168,8 @@ class _InitialSingingsWidgetState extends State<InitialSingingsWidget> {
                               ),
                             ),
                             FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                context.pushNamed('initial_signup');
                               },
                               text: 'Sign Up',
                               options: FFButtonOptions(

@@ -1,8 +1,9 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,12 @@ import 'profile_create_model.dart';
 export 'profile_create_model.dart';
 
 class ProfileCreateWidget extends StatefulWidget {
-  const ProfileCreateWidget({super.key});
+  const ProfileCreateWidget({
+    super.key,
+    required this.userident,
+  });
+
+  final String? userident;
 
   @override
   State<ProfileCreateWidget> createState() => _ProfileCreateWidgetState();
@@ -67,60 +73,37 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
             automaticallyImplyLeading: false,
             actions: [],
             flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 50.0,
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 30.0,
-                              ),
-                              onPressed: () async {
-                                context.pop();
-                              },
-                            ),
+              title: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              15.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Create Profile',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily,
+                                  fontSize: 32.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .headlineMediumFamily),
+                                ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Create Profile',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily,
-                                    fontSize: 32.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineMediumFamily),
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               centerTitle: true,
               expandedTitleScale: 1.0,
@@ -174,11 +157,8 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                           ),
                           child: Image.network(
                             valueOrDefault<String>(
-                              random_data.randomImageUrl(
-                                0,
-                                0,
-                              ),
-                              'https://i.seadn.io/gae/6xxeJMz0SBziNYlf0NnN_59rbuizSfH64lAdW1wKk2lXUcX5ARDLmyj6SNOCr0fxXnT5paImdRaNA8dO3NhyWtpbVd6njMmu_HPa_Q?auto=format&dpr=1&w=1000',
+                              _model.uploadedFileUrl,
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-R6m7t5jIHUDr77iV4QMw7u2KZxua19H3TOy4pizuYA&s',
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -188,8 +168,53 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              storageFolderPath: 'pics',
+                              maxWidth: 300.00,
+                              maxHeight: 300.00,
+                              allowPhoto: true,
+                            );
+                            if (selectedMedia != null &&
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
+                              setState(() => _model.isDataUploading = true);
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+
+                              var downloadUrls = <String>[];
+                              try {
+                                selectedUploadedFiles = selectedMedia
+                                    .map((m) => FFUploadedFile(
+                                          name: m.storagePath.split('/').last,
+                                          bytes: m.bytes,
+                                          height: m.dimensions?.height,
+                                          width: m.dimensions?.width,
+                                          blurHash: m.blurHash,
+                                        ))
+                                    .toList();
+
+                                downloadUrls = await uploadSupabaseStorageFiles(
+                                  bucketName: 'ProfilePic',
+                                  selectedFiles: selectedMedia,
+                                );
+                              } finally {
+                                _model.isDataUploading = false;
+                              }
+                              if (selectedUploadedFiles.length ==
+                                      selectedMedia.length &&
+                                  downloadUrls.length == selectedMedia.length) {
+                                setState(() {
+                                  _model.uploadedLocalFile =
+                                      selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl = downloadUrls.first;
+                                });
+                              } else {
+                                setState(() {});
+                                return;
+                              }
+                            }
                           },
                           text: 'Upload Image',
                           options: FFButtonOptions(
@@ -343,7 +368,7 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                               controller: _model.yourNameController2,
                               focusNode: _model.yourNameFocusNode2,
                               autofillHints: [AutofillHints.name],
-                              textCapitalization: TextCapitalization.words,
+                              textCapitalization: TextCapitalization.none,
                               obscureText: false,
                               decoration: InputDecoration(
                                 labelText: 'Bio',
@@ -448,8 +473,16 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 15.0, 0.0, 0.0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await ProfileTable().insert({
+                                'full_name': _model.yourNameController1.text,
+                                'profile_description':
+                                    _model.yourNameController2.text,
+                                'url_image': _model.uploadedFileUrl,
+                                'id_user': currentUserUid,
+                              });
+
+                              context.pushNamed('main_discover');
                             },
                             text: 'Create Profile',
                             options: FFButtonOptions(

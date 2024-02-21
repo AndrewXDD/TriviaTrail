@@ -5,25 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'friends_list_model.dart';
-export 'friends_list_model.dart';
+import 'main_friends_list_model.dart';
+export 'main_friends_list_model.dart';
 
-class FriendsListWidget extends StatefulWidget {
-  const FriendsListWidget({super.key});
+class MainFriendsListWidget extends StatefulWidget {
+  const MainFriendsListWidget({super.key});
 
   @override
-  State<FriendsListWidget> createState() => _FriendsListWidgetState();
+  State<MainFriendsListWidget> createState() => _MainFriendsListWidgetState();
 }
 
-class _FriendsListWidgetState extends State<FriendsListWidget> {
-  late FriendsListModel _model;
+class _MainFriendsListWidgetState extends State<MainFriendsListWidget> {
+  late MainFriendsListModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => FriendsListModel());
+    _model = createModel(context, () => MainFriendsListModel());
   }
 
   @override
@@ -118,10 +118,10 @@ class _FriendsListWidgetState extends State<FriendsListWidget> {
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           height:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -188,10 +188,10 @@ class _FriendsListWidgetState extends State<FriendsListWidget> {
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           height:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -258,10 +258,10 @@ class _FriendsListWidgetState extends State<FriendsListWidget> {
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           height:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
@@ -328,10 +328,10 @@ class _FriendsListWidgetState extends State<FriendsListWidget> {
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           height:
                                               MediaQuery.sizeOf(context).width *
-                                                  0.15,
+                                                  0.14,
                                           clipBehavior: Clip.antiAlias,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,

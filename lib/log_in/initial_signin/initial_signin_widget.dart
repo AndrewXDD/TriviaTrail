@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -86,126 +87,67 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.sizeOf(context).height * 0.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 50.0,
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 30.0,
-                              ),
-                              onPressed: () async {
-                                context.pop();
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                235.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Log In',
-                              style: FlutterFlowTheme.of(context).headlineSmall,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      'Page Title',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Inter',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 22.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily),
-                              ),
-                    ),
-                  ],
-                ),
-              ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
-            ),
-            elevation: 0.0,
-          ),
-        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(),
-                alignment: AlignmentDirectional(-1.0, 0.0),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(35.0, 55.0, 35.0, 55.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        'Sign In',
-                        style:
-                            FlutterFlowTheme.of(context).displayMedium.override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayMediumFamily,
-                                  fontWeight: FontWeight.w800,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .displayMediumFamily),
-                                ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 55.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 15.0),
+                    child: FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 48.0,
+                      icon: Icon(
+                        Icons.arrow_back_rounded,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. ',
-                          style: FlutterFlowTheme.of(context)
-                              .bodyMedium
-                              .override(
+                      onPressed: () async {
+                        context.pop();
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),
+                    child: Text(
+                      'Sign In',
+                      style:
+                          FlutterFlowTheme.of(context).displayMedium.override(
                                 fontFamily: FlutterFlowTheme.of(context)
-                                    .bodyMediumFamily,
-                                fontWeight: FontWeight.w600,
+                                    .displayMediumFamily,
+                                fontWeight: FontWeight.w800,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily),
+                                        .displayMediumFamily),
                               ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(35.0, 15.0, 35.0, 0.0),
+                    child: Text(
+                      'Fill out the information below in order to access your account.',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                            fontWeight: FontWeight.w600,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                          ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Align(
@@ -231,18 +173,6 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (responsiveVisibility(
-                          context: context,
-                          phone: false,
-                          tablet: false,
-                        ))
-                          Container(
-                            width: 230.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                          ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 16.0),
@@ -263,9 +193,7 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
+                                        .containsKey('Plus Jakarta Sans'),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -308,14 +236,25 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                      .containsKey('Plus Jakarta Sans'),
                                 ),
                             textAlign: TextAlign.start,
                             validator: _model.emailAddressControllerValidator
                                 .asValidator(context),
                           ),
                         ),
+                        if (responsiveVisibility(
+                          context: context,
+                          phone: false,
+                          tablet: false,
+                        ))
+                          Container(
+                            width: 230.0,
+                            height: 16.0,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),
+                          ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 16.0),
@@ -336,9 +275,7 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
+                                        .containsKey('Plus Jakarta Sans'),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -395,8 +332,7 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                      .containsKey('Plus Jakarta Sans'),
                                 ),
                             validator: _model.passwordControllerValidator
                                 .asValidator(context),
@@ -420,8 +356,20 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 16.0),
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+
+                                final user = await authManager.signInWithEmail(
+                                  context,
+                                  _model.emailAddressController.text,
+                                  _model.passwordController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
+
+                                context.pushNamedAuth(
+                                    'main_discover', context.mounted);
                               },
                               text: 'Sign In',
                               options: FFButtonOptions(
@@ -440,9 +388,7 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                          .containsKey('Plus Jakarta Sans'),
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -499,12 +445,10 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                               color: Color(0xFF101213),
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          'Plus Jakarta Sans'),
                                             ),
                                         elevation: 0.0,
                                         borderSide: BorderSide(
@@ -545,12 +489,10 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                               color: Color(0xFF101213),
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          'Plus Jakarta Sans'),
                                             ),
                                         elevation: 0.0,
                                         borderSide: BorderSide(

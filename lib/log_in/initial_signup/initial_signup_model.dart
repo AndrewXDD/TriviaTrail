@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,13 +27,21 @@ class InitialSignupModel extends FlutterFlowModel<InitialSignupWidget> {
   TextEditingController? passwordController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordControllerValidator;
+  // State field(s) for confirmpassword widget.
+  FocusNode? confirmpasswordFocusNode;
+  TextEditingController? confirmpasswordController;
+  late bool confirmpasswordVisibility;
+  String? Function(BuildContext, String?)? confirmpasswordControllerValidator;
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passwordVisibility = false;
+    confirmpasswordVisibility = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     emailAddressFocusNode?.dispose();
@@ -39,6 +49,9 @@ class InitialSignupModel extends FlutterFlowModel<InitialSignupWidget> {
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();
+
+    confirmpasswordFocusNode?.dispose();
+    confirmpasswordController?.dispose();
   }
 
   /// Action blocks are added here.

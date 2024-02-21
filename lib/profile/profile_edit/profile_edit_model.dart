@@ -1,8 +1,10 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/flutter_flow/upload_data.dart';
 import 'profile_edit_widget.dart' show ProfileEditWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +15,11 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
   // State field(s) for yourName widget.
   FocusNode? yourNameFocusNode1;
   TextEditingController? yourNameController1;
@@ -24,8 +31,10 @@ class ProfileEditModel extends FlutterFlowModel<ProfileEditWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     yourNameFocusNode1?.dispose();

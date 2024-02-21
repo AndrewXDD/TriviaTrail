@@ -1,3 +1,5 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -59,6 +61,9 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
 
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
+
+    _model.confirmpasswordController ??= TextEditingController();
+    _model.confirmpasswordFocusNode ??= FocusNode();
   }
 
   @override
@@ -86,77 +91,6 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: PreferredSize(
-          preferredSize:
-              Size.fromHeight(MediaQuery.sizeOf(context).height * 0.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            automaticallyImplyLeading: false,
-            actions: [],
-            flexibleSpace: FlexibleSpaceBar(
-              title: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 8.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 50.0,
-                              icon: Icon(
-                                Icons.arrow_back_rounded,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 30.0,
-                              ),
-                              onPressed: () async {
-                                context.pop();
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                215.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Register',
-                              style: FlutterFlowTheme.of(context).headlineSmall,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      'Page Title',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: 'Inter',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 22.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily),
-                              ),
-                    ),
-                  ],
-                ),
-              ),
-              centerTitle: true,
-              expandedTitleScale: 1.0,
-            ),
-            elevation: 0.0,
-          ),
-        ),
         body: Column(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
@@ -167,30 +101,52 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                 decoration: BoxDecoration(),
                 alignment: AlignmentDirectional(-1.0, 0.0),
                 child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(35.0, 55.0, 35.0, 55.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 55.0, 0.0, 55.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Sign Up',
-                        style:
-                            FlutterFlowTheme.of(context).displayMedium.override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .displayMediumFamily,
-                                  fontWeight: FontWeight.w800,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .displayMediumFamily),
-                                ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            12.0, 0.0, 0.0, 15.0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30.0,
+                          borderWidth: 1.0,
+                          buttonSize: 48.0,
+                          icon: Icon(
+                            Icons.arrow_back_rounded,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 30.0,
+                          ),
+                          onPressed: () async {
+                            context.pop();
+                          },
+                        ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            35.0, 0.0, 35.0, 0.0),
                         child: Text(
-                          'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. ',
+                          'Sign Up',
+                          style: FlutterFlowTheme.of(context)
+                              .displayMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .displayMediumFamily,
+                                fontWeight: FontWeight.w800,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .displayMediumFamily),
+                              ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            35.0, 15.0, 35.0, 0.0),
+                        child: Text(
+                          'Let\'s get started by filling out the form below.',
                           style: FlutterFlowTheme.of(context)
                               .bodyMedium
                               .override(
@@ -249,7 +205,7 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                           child: TextFormField(
                             controller: _model.emailAddressController,
                             focusNode: _model.emailAddressFocusNode,
-                            textCapitalization: TextCapitalization.sentences,
+                            textCapitalization: TextCapitalization.none,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Email',
@@ -263,9 +219,7 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
+                                        .containsKey('Plus Jakarta Sans'),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -308,10 +262,10 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                      .containsKey('Plus Jakarta Sans'),
                                 ),
                             textAlign: TextAlign.start,
+                            keyboardType: TextInputType.emailAddress,
                             validator: _model.emailAddressControllerValidator
                                 .asValidator(context),
                           ),
@@ -336,9 +290,7 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w500,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .labelMediumFamily),
+                                        .containsKey('Plus Jakarta Sans'),
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -395,10 +347,92 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily),
+                                      .containsKey('Plus Jakarta Sans'),
                                 ),
                             validator: _model.passwordControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 16.0, 16.0, 16.0),
+                          child: TextFormField(
+                            controller: _model.confirmpasswordController,
+                            focusNode: _model.confirmpasswordFocusNode,
+                            textCapitalization: TextCapitalization.sentences,
+                            obscureText: !_model.confirmpasswordVisibility,
+                            decoration: InputDecoration(
+                              labelText: 'Repeat Password',
+                              labelStyle:
+                                  FlutterFlowTheme.of(context).labelLarge,
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: Color(0xFF57636C),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey('Plus Jakarta Sans'),
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFE0E3E7),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(32.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFF4B39EF),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(32.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(32.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(32.0),
+                              ),
+                              filled: true,
+                              fillColor: Color(0xCCFFFFFF),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  25.0, 0.0, 0.0, 0.0),
+                              suffixIcon: InkWell(
+                                onTap: () => setState(
+                                  () => _model.confirmpasswordVisibility =
+                                      !_model.confirmpasswordVisibility,
+                                ),
+                                focusNode: FocusNode(skipTraversal: true),
+                                child: Icon(
+                                  _model.confirmpasswordVisibility
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: Color(0xFF57636C),
+                                  size: 20.0,
+                                ),
+                              ),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  color: Color(0xFF101213),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w500,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey('Plus Jakarta Sans'),
+                                ),
+                            validator: _model.confirmpasswordControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -420,10 +454,53 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 16.0),
                             child: FFButtonWidget(
-                              onPressed: () {
-                                print('Button pressed ...');
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                if (_model.passwordController.text !=
+                                    _model.confirmpasswordController.text) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Passwords don\'t match!',
+                                      ),
+                                    ),
+                                  );
+                                  return;
+                                }
+
+                                final user =
+                                    await authManager.createAccountWithEmail(
+                                  context,
+                                  _model.emailAddressController.text,
+                                  _model.passwordController.text,
+                                );
+                                if (user == null) {
+                                  return;
+                                }
+
+                                if (_model.passwordController.text ==
+                                    _model.confirmpasswordController.text) {
+                                  await UsersTable().insert({
+                                    'id_user': currentUserUid,
+                                    'email': _model.emailAddressController.text,
+                                    'password': _model.passwordController.text,
+                                  });
+                                } else {
+                                  return;
+                                }
+
+                                context.goNamedAuth(
+                                  'profile_Create',
+                                  context.mounted,
+                                  queryParameters: {
+                                    'userident': serializeParam(
+                                      currentUserUid,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
-                              text: 'Sign Up',
+                              text: 'Create Account',
                               options: FFButtonOptions(
                                 width: 320.0,
                                 height: 52.0,
@@ -440,9 +517,7 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w500,
                                       useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily),
+                                          .containsKey('Plus Jakarta Sans'),
                                     ),
                                 elevation: 3.0,
                                 borderSide: BorderSide(
@@ -499,12 +574,10 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                               color: Color(0xFF101213),
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          'Plus Jakarta Sans'),
                                             ),
                                         elevation: 0.0,
                                         borderSide: BorderSide(
@@ -545,12 +618,10 @@ class _InitialSignupWidgetState extends State<InitialSignupWidget>
                                               color: Color(0xFF101213),
                                               fontSize: 14.0,
                                               fontWeight: FontWeight.bold,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily),
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey(
+                                                          'Plus Jakarta Sans'),
                                             ),
                                         elevation: 0.0,
                                         borderSide: BorderSide(

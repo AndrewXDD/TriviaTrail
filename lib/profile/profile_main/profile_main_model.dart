@@ -1,7 +1,8 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
 import 'profile_main_widget.dart' show ProfileMainWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,8 +20,10 @@ class ProfileMainModel extends FlutterFlowModel<ProfileMainWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     txtEmailFocusNode?.dispose();
