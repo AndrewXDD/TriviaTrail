@@ -4,10 +4,6 @@ export '/main/main_leaderboards/main_leaderboards_widget.dart'
     show MainLeaderboardsWidget;
 export '/trivia/trivia_questions/trivia_questions_widget.dart'
     show TriviaQuestionsWidget;
-export '/trivia/trivia_questions_correct/trivia_questions_correct_widget.dart'
-    show TriviaQuestionsCorrectWidget;
-export '/trivia/trivia_questions_incorrect/trivia_questions_incorrect_widget.dart'
-    show TriviaQuestionsIncorrectWidget;
 export '/log_in/initial_singings/initial_singings_widget.dart'
     show InitialSingingsWidget;
 export '/log_in/initial_signin/initial_signin_widget.dart'
@@ -23,3 +19,5 @@ export '/main/main_friends_list/main_friends_list_widget.dart'
 export '/main/main_home/main_home_widget.dart' show MainHomeWidget;
 export '/profile/profile_edit/profile_edit_widget.dart' show ProfileEditWidget;
 export '/profile/profile_main/profile_main_widget.dart' show ProfileMainWidget;
+export '/trivia/trivia_create/trivia_create_widget.dart'
+    show TriviaCreateWidget;

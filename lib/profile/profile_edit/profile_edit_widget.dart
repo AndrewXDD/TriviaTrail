@@ -43,15 +43,6 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return FutureBuilder<List<ProfileRow>>(
       future: ProfileTable().querySingleRow(
         queryFn: (q) => q.eq(
@@ -126,22 +117,12 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                 },
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  4.0, 0.0, 0.0, 0.0),
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Text(
-                                'Edit Profile',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .headlineMediumFamily,
-                                      fontSize: 32.0,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMediumFamily),
-                                    ),
+                                'My Profile',
+                                style:
+                                    FlutterFlowTheme.of(context).headlineLarge,
                               ),
                             ),
                           ],
@@ -402,8 +383,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondary,
+                                      fillColor: Color(0xFFFFEAD1),
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 0.0, 24.0),
@@ -537,8 +517,7 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         filled: true,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondary,
+                                        fillColor: Color(0xFFFFEAD1),
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 24.0, 0.0, 24.0),

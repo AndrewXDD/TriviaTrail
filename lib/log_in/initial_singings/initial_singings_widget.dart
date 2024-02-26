@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'initial_singings_model.dart';
@@ -35,15 +34,6 @@ class _InitialSingingsWidgetState extends State<InitialSingingsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -118,7 +108,7 @@ class _InitialSingingsWidgetState extends State<InitialSingingsWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 40.0, 0.0),
                             child: Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. ',
+                              'Welcome to TriviaTrail!\n\nWe are pleased to extend a warm welcome to our exciting app, TriviaTrail. Immerse yourself in a journey full of knowledge and fun as you explore challenging questions and discover fascinating curiosities.',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context).bodyLarge,
                             ),

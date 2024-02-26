@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'profile_change_password_model.dart';
@@ -43,15 +42,6 @@ class _ProfileChangePasswordWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -100,16 +90,7 @@ class _ProfileChangePasswordWidgetState
                               4.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Change Password',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily,
-                                  fontSize: 32.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineMediumFamily),
-                                ),
+                            style: FlutterFlowTheme.of(context).headlineLarge,
                           ),
                         ),
                       ],
@@ -226,7 +207,7 @@ class _ProfileChangePasswordWidgetState
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              fillColor: Color(0xFFFFFFEB),
+                              fillColor: Color(0xFFFFEAD1),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 24.0, 20.0, 24.0),
                             ),

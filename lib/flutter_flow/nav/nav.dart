@@ -113,16 +113,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'trivia_questions_correct',
-          path: '/triviaQuestionsCorrect',
-          builder: (context, params) => TriviaQuestionsCorrectWidget(),
-        ),
-        FFRoute(
-          name: 'trivia_questions_incorrect',
-          path: '/triviaQuestionsIncorrect',
-          builder: (context, params) => TriviaQuestionsIncorrectWidget(),
-        ),
-        FFRoute(
           name: 'initial_singings',
           path: '/initialSingings',
           builder: (context, params) => InitialSingingsWidget(),
@@ -174,6 +164,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'profile_Main')
               : ProfileMainWidget(),
+        ),
+        FFRoute(
+          name: 'trivia_create',
+          path: '/triviaCreate',
+          builder: (context, params) => TriviaCreateWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -347,6 +342,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(

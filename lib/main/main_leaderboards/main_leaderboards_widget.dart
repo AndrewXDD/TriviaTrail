@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'main_leaderboards_model.dart';
@@ -42,15 +41,6 @@ class _MainLeaderboardsWidgetState extends State<MainLeaderboardsWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -120,6 +110,10 @@ class _MainLeaderboardsWidgetState extends State<MainLeaderboardsWidget>
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,
                               height: 511.0,
+                              constraints: BoxConstraints(
+                                maxWidth:
+                                    MediaQuery.sizeOf(context).width * 0.9,
+                              ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -1437,12 +1431,23 @@ class _MainLeaderboardsWidgetState extends State<MainLeaderboardsWidget>
                                                 alignment: AlignmentDirectional(
                                                     -1.0, 1.0),
                                                 child: Container(
-                                                  width: 116.0,
+                                                  width: 120.0,
                                                   height: 75.0,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(5.0),
+                                                      topRight:
+                                                          Radius.circular(0.0),
+                                                    ),
                                                   ),
                                                   child: Align(
                                                     alignment:
@@ -1482,6 +1487,17 @@ class _MainLeaderboardsWidgetState extends State<MainLeaderboardsWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(5.0),
+                                                      topRight:
+                                                          Radius.circular(5.0),
+                                                    ),
                                                   ),
                                                   child: Align(
                                                     alignment:
@@ -1513,14 +1529,25 @@ class _MainLeaderboardsWidgetState extends State<MainLeaderboardsWidget>
                                               ),
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.0, 1.0),
+                                                    1.0, 1.0),
                                                 child: Container(
-                                                  width: 99.0,
+                                                  width: 115.0,
                                                   height: 50.0,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(0.0),
+                                                      topRight:
+                                                          Radius.circular(5.0),
+                                                    ),
                                                   ),
                                                   child: Align(
                                                     alignment:

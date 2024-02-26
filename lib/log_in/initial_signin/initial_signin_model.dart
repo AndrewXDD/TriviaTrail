@@ -7,9 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'initial_signin_widget.dart' show InitialSigninWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

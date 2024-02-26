@@ -49,15 +49,6 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -83,21 +74,15 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              15.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Create Profile',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .headlineMediumFamily,
-                                  fontSize: 32.0,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .headlineMediumFamily),
-                                ),
+                        Align(
+                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                15.0, 0.0, 0.0, 0.0),
+                            child: Text(
+                              'My Profile',
+                              style: FlutterFlowTheme.of(context).headlineLarge,
+                            ),
                           ),
                         ),
                       ],
@@ -333,7 +318,7 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               filled: true,
-                              fillColor: FlutterFlowTheme.of(context).secondary,
+                              fillColor: Color(0xFFFFEAD1),
                               contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 0.0, 24.0),
                             ),
@@ -437,8 +422,7 @@ class _ProfileCreateWidgetState extends State<ProfileCreateWidget> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 filled: true,
-                                fillColor:
-                                    FlutterFlowTheme.of(context).secondary,
+                                fillColor: Color(0xFFFFEAD1),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 24.0, 0.0, 24.0),
                               ),
