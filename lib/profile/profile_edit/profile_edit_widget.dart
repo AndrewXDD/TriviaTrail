@@ -232,6 +232,10 @@ class _ProfileEditWidgetState extends State<ProfileEditWidget> {
                                       }
                                     }
 
+                                    if (profileEditProfileRow?.urlImage ==
+                                        _model.uploadedFileUrl) {
+                                      return;
+                                    }
                                     await ProfileTable().update(
                                       data: {
                                         'url_image': _model.uploadedFileUrl,

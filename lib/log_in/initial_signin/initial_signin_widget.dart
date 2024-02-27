@@ -157,10 +157,11 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 35.0, 24.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(15.0, 25.0, 15.0, 0.0),
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -232,18 +233,6 @@ class _InitialSigninWidgetState extends State<InitialSigninWidget>
                                 .asValidator(context),
                           ),
                         ),
-                        if (responsiveVisibility(
-                          context: context,
-                          phone: false,
-                          tablet: false,
-                        ))
-                          Container(
-                            width: 230.0,
-                            height: 16.0,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                          ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 16.0),
