@@ -128,7 +128,7 @@ class _TriviaCreateWidgetState extends State<TriviaCreateWidget> {
                               25.0, 0.0, 25.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 0.758,
+                            height: MediaQuery.sizeOf(context).height * 0.79,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).secondary,
                               borderRadius: BorderRadius.circular(35.0),
